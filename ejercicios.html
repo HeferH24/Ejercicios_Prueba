@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <script> 
+    
+    
+
+
+// Ejercicio 21 
+// Crear un iterador for para el arreglo numerico e ir elevando al cuadrado cada elemento con math.pow () 
+
+
+const cuadrado = (array = undefined)=> {
+
+if (!array) return console.warn ("No se ha ingresado un arreglo"); 
+if (!(array instanceof Array)) return console.warn ("Tipo de caracter no permitido");
+if (array.length < 1) return console.warn ("No hay ningun elemento");
+if (isNaN(...array)) return console.error ("Solo se permiten numeros");
+
+let arregloElevado = []; 
+for ( let numero of array) {
+arregloElevado.push(Math.pow(numero,2))
+} 
+
+return console.log (arregloElevado);
+}
+
+cuadrado ([2,34,54,3]);
+
+
+// ejercicio 22 - Extraer valor maximo y minimo de un arreglo
+//  extraer con Math.max e Math.Min y alamacenar estos valores en un arreglo vacio con push(),
+// y uso de operador spread 
+
+
+const maxMin = (array = "")=> { 
+
+ if (!array) return console.warn ("No se ingreso un arreglo") 
+ if (!(array instanceof Array)) return console.warn ("Tipo de cararcter no valido")
+ if (array.length < 1) return console.warn ("El arreglo no tiene ningun elemento")
+ if (isNaN(...array)) return console.error ("Solo se permiten numeros")
+
+let nMaxMin = []; 
+
+nMaxMin.push (Math.max(...array))  
+nMaxMin.push (Math.min(...array))
+
+return console.info (nMaxMin)
+}
+
+
+maxMin ([2,5,3,-90,5]); 
+
+// Ejercicio 23 - detectar Pares e impares de un array y devolverlo en object
+
+// iterar por cada elemento del arreglo e ir comprobando si su residuo es 0 o 1 con % , dependiendo a ello
+// almacenarlos en arrays vacios 
+
+// me funciono IsNaN y operador spread :D
+
+const dectectarParImpar = (array = "")=> { 
+if (!array) return console.warn ("No se ha ingresado un arreglo"); 
+if (!(array instanceof Array)) return console.warn ("No se permite el tipo de Dato")
+if (array.length < 1) return console.warn ("El arreglo no tienen ningun elemento")
+if (isNaN(...array)) return console.error ("Solo se permiten numeros")
+
+ let Pares = [], 
+   impares = []; 
+ for (let num of array ) { 
+   
+  if (num%2 === 0) { 
+    Pares.push (num) 
+   } else if (num%2 === 1) {
+    impares.push(num)  
+   }
+  }
+ return console.info({ 
+   Pares, 
+   impares, 
+ })
+}
+
+dectectarParImpar([89,86,45,87,34,67]); 
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
