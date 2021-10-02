@@ -13,8 +13,7 @@
     <script> 
     
     
-/* Es la primera vez que uso github, espero no estar haciendo algo incorrecto pero 
-  bueno, es parte de aprender ;)*/
+
 
 // Ejercicio 21 
 // Crear un iterador for para el arreglo numerico e ir elevando al cuadrado cada elemento con math.pow () 
@@ -96,6 +95,75 @@ dectectarParImpar([89,86,45,87,34,67]);
 
 
 
+// EJERCICIO FINAL - crear una clase de peliculas  
+
+class pelicula {
+  constructor(informacion){
+   
+    this.informacion = [...informacion]
+
+    const gValidos = ["Action", "Adult", "Adventure", "Animation",
+   "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", 
+   "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", 
+   "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show",
+   "Thriller", "War", "Western"]
+
+   const gIngresadosMinus = this.informacion[5].map(el => el.toLowerCase());
+    
+   const gValidosMinus = gValidos.map(el => el.toLowerCase());
+  
+    if (this.informacion.length < 7) return console.warn ("Todos los datos son obligatorios");
+
+    if (/^([a-zA-z]{2})+([0-9]{7})+$/i.test(this.informacion[0]) === false) return console.error ("Id no valido"); 
+
+    if (/^([a-zA-Zñ0-9-:\s]{2,100})$/i.test(this.informacion[1]) === false) return console.warn ("Titulo muy largo/corto")
+ 
+    if (/^([a-zA-Zñ-\s]{3,50})$/i.test(this.informacion[2]) === false) return console.warn("Nombre de director invalido")
+
+    if (/^([0-9]{4})$/.test(this.informacion[3]) === false || typeof this.informacion[3] !== "number") return console.warn("Año de estreno no valido")
+
+    if (!(this.informacion[4] instanceof Array)) return console.error ("El tipo de dato (paises) debe estar en un arreglo")
+    if (!(this.informacion[5] instanceof Array)) return console.error ("Los generos deben estar en un arreglo")
+
+    for (let elem of gIngresadosMinus){
+     
+      if (!(gValidosMinus.includes(elem))) return console.warn ("El genero introducido no se encuentra en los generos validos")
+    }
+    if (typeof this.informacion[6] !== "number") return console.error("Calificacion Invalida")
+ 
+    if (this.informacion[6].toString().length > 3) return console.error ("Calificacion Invalida")
+
+    if ( Math.sign (this.informacion[6]) === -1||this.informacion[6] > 10) return console.error ("Calificacion invalida")
+}
+  static generosValidos () {
+    this.generosV = ["Action", "Adult", "Adventure", "Animation",
+   "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", 
+   "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", 
+   "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show",
+   "Thriller", "War", "Western"]
+    return console.info ({Géneros_Aceptados: this.generosV})
+  }
+
+ fichaTecnica (){ 
+   return console.info({
+    id_IMDB: this.informacion[0],  
+     Titulo : this.informacion[1],   
+     Director : this.informacion[2],  
+     Fecha_estreno : this.informacion[3],
+     País_de_origen: this.informacion[4], 
+     Generos : this.informacion[5] ,
+     Calificación: this.informacion[6]
+   })
+ }
+}
+
+const peli1 = new pelicula (["tt0884328","The Mist","Frank Darabont",2007,["United States"],["Sci-fi","Thriller","Horror"],7.1]),
+      peli2 = new pelicula (["tt3731562","Kong: the skull island","Jordan Vogt-Roberts",2017, ["United States", "China"],["Action","adventure","fantasy"],6.6]),
+      peli3 = new pelicula (["tt1055369","Transformers 2: la venganza de los caidos","Michael Bay",2009,["United States"],["Action","adventure","Sci-fi"],6.0])
+
+peli1.fichaTecnica(); 
+peli2.fichaTecnica(); 
+peli3.fichaTecnica(); 
 
     
     
